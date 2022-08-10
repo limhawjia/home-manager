@@ -14,3 +14,7 @@
 
 1. A system reboot might be required for the new default shell to take effect
 2. Run `vi +PackerSync` to install neovim plugins
+
+## Others
+
+Configuration files for other programs can be found at `others/`.
