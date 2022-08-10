@@ -14,14 +14,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  # TERM: 'screen-256color'
 
 window:
   # Window dimensions (changes require restart)
@@ -856,8 +856,8 @@ key_bindings:
   #- { key: NumpadAdd,      mods: Command,                    action: IncreaseFontSize      }
   #- { key: Minus,          mods: Command,                    action: DecreaseFontSize      }
   #- { key: NumpadSubtract, mods: Command,                    action: DecreaseFontSize      }
-  #- { key: V,              mods: Command,                    action: Paste                 }
-  #- { key: C,              mods: Command,                    action: Copy                  }
+  - { key: V,              mods: Command,                    action: Paste                 }
+  - { key: C,              mods: Command,                    action: Copy                  }
   #- { key: C,              mods: Command, mode: Vi|~Search,  action: ClearSelection        }
   #- { key: H,              mods: Command,                    action: Hide                  }
   #- { key: H,              mods: Command|Alt,                action: HideOtherApplications }

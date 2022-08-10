@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
-
+let
+  kubectx = pkgs.callPackage ./pkgs/kubectx {  };
+  kubens = pkgs.callPackage ./pkgs/kubens {  };
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -35,6 +38,8 @@
     ]))
     pkgs.gopls
     pkgs.tree-sitter
+    kubectx
+    kubens
   ];
 
   # Let Home Manager install and manage itself.
@@ -57,6 +62,16 @@
 
       set -o vi
       bindkey '^y' autosuggest-accept
+
+      KUBECONFIG_DIR="$HOME/.kubeconfigs"
+      mkdir -p "$KUBECONFIG_DIR"
+      OIFS="$IFS"
+      IFS=$'\n'
+      for kubeconfigFile in `find "$KUBECONFIG_DIR" -type f -name "*.yml" -o -name "*.yaml"`
+      do
+          export KUBECONFIG="$kubeconfigFile:$KUBECONFIG"
+      done
+      IFS="$OIFS"
     '';
 
     oh-my-zsh = {
@@ -85,6 +100,8 @@
 
     shellAliases = {
       goversion = "TZ=UTC git --no-pager show --quiet --abbrev=12 --date='format-local:%Y%m%d%H%M%S' --format=\"%cd-%h\"";
+      kc = "kubectx"
+      kns = "kubens"
     };
   };
 
