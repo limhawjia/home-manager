@@ -100,8 +100,8 @@ in
 
     shellAliases = {
       goversion = "TZ=UTC git --no-pager show --quiet --abbrev=12 --date='format-local:%Y%m%d%H%M%S' --format=\"%cd-%h\"";
-      kc = "kubectx"
-      kns = "kubens"
+      kc = "kubectx";
+      kns = "kubens";
     };
   };
 
