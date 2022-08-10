@@ -47,7 +47,7 @@ in
 
   programs.tmux = {
     enable = true;
-    terminal = "screen-256color";
+    terminal = "alacritty";
     extraConfig = lib.strings.fileContents ./tmux.conf;
   };
 

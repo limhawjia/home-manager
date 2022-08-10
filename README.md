@@ -17,4 +17,5 @@
 
 ## Others
 
-Configuration files for other programs can be found at `others/`.
+* Configuration files for other programs can be found at `others/`
+* When using alacritty, `programs.tmux.terminal` must be set to "alacritty" for colors to work with tmux
