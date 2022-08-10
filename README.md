@@ -8,7 +8,7 @@
 
 1. Install [nix](https://github.com/NixOS/nix#installation) and [home-manager](https://nix-community.github.io/home-manager/index.html#sec-install-standalone)
 2. Overwrite necessary values in `nixpkgs/home.nix`
-3. Run `bash setup.sh` or `bash setup-macos.sh` (note that the macos script requires the coreutils package to access `realpath`)
+3. Run `bash setup.sh` or `bash setup-macos.sh` (note that the macos script requires the brew `coreutils` package to access `realpath`)
 
 ## After running setup script for the first time
 
