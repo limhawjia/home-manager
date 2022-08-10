@@ -33,6 +33,12 @@ end)
 
 -- nightfox
 vim.cmd("colorscheme nightfox")
+require"nightfox".setup({
+  options = {
+    transparent = true,    -- Disable setting background
+    terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+  }
+})
 
 -- lualine
 require"lualine".setup {options = {theme = 'nightfox'}, extensions = {'nvim-tree'}}
