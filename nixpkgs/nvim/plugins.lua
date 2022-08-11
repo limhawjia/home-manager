@@ -205,5 +205,6 @@ require"nvim-treesitter.configs".setup{
   ensure_installed = { "go", "lua", "python" }
 }
 
-vim.cmd("set foldmethod=expr")
-vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd("autocmd BufReadPost,FileReadPost * normal zR")
