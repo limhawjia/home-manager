@@ -49,6 +49,8 @@ require"bufferline".setup {
 }
 vim.cmd("cnoreabbrev <silent> bn :BufferLineCycleNext<cr>")
 vim.cmd("cnoreabbrev <silent> bp :BufferLineCyclePrev<cr>")
+vim.api.nvim_set_keymap('n', ']b', ":BufferLineCycleNext<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '[b', ":BufferLineCyclePrev<cr>", {noremap = true, silent = true})
 
 -- nvim-cmp
 local cmp = require"cmp"
@@ -197,3 +199,11 @@ require"nvim-tree".setup{
 }
 vim.api.nvim_set_keymap('n', '<C-n>', ":NvimTreeToggle<cr>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<space>n', ":NvimTreeFindFile<cr>", {noremap = true, silent = true})
+
+-- treesitter
+require"nvim-treesitter.configs".setup{
+  ensure_installed = { "go", "lua", "python" }
+}
+
+vim.cmd("set foldmethod=expr")
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")

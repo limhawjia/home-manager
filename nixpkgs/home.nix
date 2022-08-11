@@ -40,6 +40,7 @@ in
     pkgs.tree-sitter
     kubectx
     kubens
+    pkgs.kubernetes-helm
   ];
 
   # Let Home Manager install and manage itself.
