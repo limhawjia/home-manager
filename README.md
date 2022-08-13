@@ -19,3 +19,4 @@
 
 * Configuration files for other programs can be found at `others/`
 * `Docker` needs to be installed separately :(
+* `terminal` option for tmux should match the `$TERM` variable of whatever terminal you're using
