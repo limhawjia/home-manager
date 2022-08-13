@@ -18,4 +18,4 @@
 ## Others
 
 * Configuration files for other programs can be found at `others/`
-* When using MacOS with alacritty, `programs.tmux.terminal` must be set to "alacritty" for neovim true-colors to work with tmux
+* `Docker` needs to be installed separately :(

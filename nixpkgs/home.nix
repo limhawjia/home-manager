@@ -20,13 +20,26 @@ in
   home.stateVersion = "22.05";
 
   home.packages = [
+    # basics
+    pkgs.stdenv
+    pkgs.gnumake
+    pkgs.cmake
+    pkgs.gcc
     pkgs.htop
     pkgs.ripgrep
     pkgs.fd
     pkgs.jq
     pkgs.yq
+
+    # kubernetes
     pkgs.docker
     pkgs.kubectl
+    kubectx
+    kubens
+    pkgs.kubernetes-helm
+    pkgs.minikube
+
+    # languages
     (pkgs.python3.withPackages (p: with p; [
       ipython
       pylint
@@ -38,9 +51,8 @@ in
     ]))
     pkgs.gopls
     pkgs.tree-sitter
-    kubectx
-    kubens
-    pkgs.kubernetes-helm
+    pkgs.rustc
+    pkgs.cargo
   ];
 
   # Let Home Manager install and manage itself.
@@ -48,7 +60,6 @@ in
 
   programs.tmux = {
     enable = true;
-    terminal = "alacritty";
     extraConfig = lib.strings.fileContents ./tmux.conf;
   };
 
@@ -56,24 +67,7 @@ in
     enable = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
-    initExtra = ''
-      if [ -e /home/hawjia/.nix-profile/etc/profile.d/nix.sh ]; then
-        . /home/hawjia/.nix-profile/etc/profile.d/nix.sh
-      fi
-
-      set -o vi
-      bindkey '^y' autosuggest-accept
-
-      KUBECONFIG_DIR="$HOME/.kubeconfigs"
-      mkdir -p "$KUBECONFIG_DIR"
-      OIFS="$IFS"
-      IFS=$'\n'
-      for kubeconfigFile in `find "$KUBECONFIG_DIR" -type f -name "*.yml" -o -name "*.yaml"`
-      do
-          export KUBECONFIG="$kubeconfigFile:$KUBECONFIG"
-      done
-      IFS="$OIFS"
-    '';
+    initExtra = lib.strings.fileContents ./zshrc;
 
     oh-my-zsh = {
       enable = true;

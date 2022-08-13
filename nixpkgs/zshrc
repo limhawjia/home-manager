@@ -1,0 +1,19 @@
+if [ -e /home/hawjia/.nix-profile/etc/profile.d/nix.sh ]; then
+. /home/hawjia/.nix-profile/etc/profile.d/nix.sh
+fi
+
+set -o vi
+bindkey '^y' autosuggest-accept
+
+KUBECONFIG_DIR="$HOME/.kubeconfigs"
+mkdir -p "$KUBECONFIG_DIR"
+OIFS="$IFS"
+IFS=$'\n'
+for kubeconfigFile in `find "$KUBECONFIG_DIR" -type f -name "*.yml" -o -name "*.yaml"`
+do
+  export KUBECONFIG="$kubeconfigFile:$KUBECONFIG"
+done
+IFS="$OIFS"
+
+export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$HOME/.cargo/bin
