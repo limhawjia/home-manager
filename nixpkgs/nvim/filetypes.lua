@@ -49,4 +49,9 @@ augroup go
   autocmd Filetype go setlocal expandtab!
   autocmd Filetype go setlocal sw=8 sts=0 ts=8
 augroup end
+
+augroup all
+  autocmd!
+  autocmd BufReadPost * normal zR
+augroup end
 ]]

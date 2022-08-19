@@ -136,6 +136,7 @@ telescope.setup {
 telescope.load_extension('fzf')
 vim.api.nvim_set_keymap('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-f>', "<cmd>lua require('telescope.builtin').live_grep{debounce = 100}<cr>", {noremap = true})
+vim.api.nvim_set_keymap('n', '<space>m', "<cmd>lua require('telescope.builtin').buffers()<cr>", {noremap = true})
 
 -- formatter
 require"formatter".setup({
@@ -212,4 +213,3 @@ require"nvim-treesitter.configs".setup{
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.cmd("autocmd BufReadPost,FileReadPost * normal zR")
