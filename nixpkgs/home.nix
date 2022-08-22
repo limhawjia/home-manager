@@ -30,6 +30,7 @@ in
     pkgs.fd
     pkgs.jq
     pkgs.yq
+    pkgs.wget
 
     # kubernetes
     pkgs.docker

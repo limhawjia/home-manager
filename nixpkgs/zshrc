@@ -17,3 +17,7 @@ IFS="$OIFS"
 
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:$HOME/.cargo/bin
+
+if [[ -e ~/.kube/kubesess/scripts/sh/kubesess.sh ]]; then
+  source ~/.kube/kubesess/scripts/sh/kubesess.sh
+fi
