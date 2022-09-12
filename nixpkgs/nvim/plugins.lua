@@ -23,6 +23,7 @@ packer.startup(function(use)
   }
 
   use {'nvim-treesitter/nvim-treesitter', run = function() require('nvim-treesitter.install').update({ with_sync = true }) end}
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}, {'kyazdani42/nvim-web-devicons'}}}
@@ -116,14 +117,6 @@ end
 -- telescope
 local telescope = require"telescope"
 telescope.setup {
-  defaults = {
-    layout_strategy = "vertical",
-    layout_config = {
-      horizontal = {
-        preview_width = 0.5
-      }
-    }
-  },
   pickers = {
     find_files = {
       find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git/*" }
