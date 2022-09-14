@@ -117,6 +117,9 @@ end
 -- telescope
 local telescope = require"telescope"
 telescope.setup {
+  defaults = {
+    path_display={"smart"}
+  },
   pickers = {
     find_files = {
       find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git/*" }
@@ -130,6 +133,8 @@ telescope.load_extension('fzf')
 vim.api.nvim_set_keymap('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-f>', "<cmd>lua require('telescope.builtin').live_grep{debounce = 100}<cr>", {noremap = true})
 vim.api.nvim_set_keymap('n', '<space>m', "<cmd>lua require('telescope.builtin').buffers()<cr>", {noremap = true})
+vim.api.nvim_set_keymap('n', '<space>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", {noremap = true})
+vim.api.nvim_set_keymap('n', '<space>as', "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", {noremap = true})
 
 -- formatter
 require"formatter".setup({
